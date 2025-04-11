@@ -1,20 +1,20 @@
-function fetchFact() {
-    const number = document.getElementById('numberInput').value;
-    const factDisplay = document.getElementById('fact');
+function getFact() {
+    const number = document.getElementById("numberInput").value;
+    const factText = document.getElementById("factText");
   
-    if (number === '') {
-      factDisplay.textContent = 'Por favor, ingresa un número.';
+    if (number === "") {
+      factText.innerText = "Por favor ingresa un número.";
       return;
     }
   
     fetch(`http://numbersapi.com/${number}`)
       .then(response => response.text())
-      .then(fact => {
-        factDisplay.textContent = fact;
+      .then(data => {
+        factText.innerText = data;
       })
       .catch(error => {
-        factDisplay.textContent = 'Error al consultar la API.';
-        console.error(error);
+        console.error("Error al obtener el dato:", error);
+        factText.innerText = "Hubo un error al obtener el dato.";
       });
   }
   
